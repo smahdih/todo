@@ -1,0 +1,17 @@
+{
+    "name": "smahd/hospital",
+    "autoload": {
+        "files": ["app/Helper/helper.php"],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "smahdih",
+            "email": "smahdih574@gmail.com"
+        }
+    ],
+    "require": {
+    }
+}
