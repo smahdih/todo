@@ -1,4 +1,3 @@
-
 <div class="row mt-4">
     <div class="col-4 mx-auto">
         <h3>ثبت نام</h3>
@@ -33,28 +32,6 @@
                         <?php } ?>
                     </div>
                     <div class="form-group mb-2">
-                        <label for="phone_number">شماره موبایل</label>
-                        <input type="text" id="phone_number" class="form-control" name="phone_number">
-                        <?php if (isset($_SESSION['errors']['phone_number'])) { ?>
-                            <div class="text-danger">
-                                <?php echo $_SESSION['errors']['phone_number'] ?>
-                            </div>
-                        <?php } ?>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="phone_number">نوع</label>
-                        <select class="form-select" name="type">
-                            <option value="PATIENT">بیمار</option>
-                            <option value="DOCTOR">پزشک</option>
-                            <option value="ADMIN">مدیر</option>
-                        </select>
-                        <?php if (isset($_SESSION['errors']['type'])) { ?>
-                            <div class="text-danger">
-                                <?php echo $_SESSION['errors']['type'] ?>
-                            </div>
-                        <?php } ?>
-                    </div>
-                    <div class="form-group mb-2">
                         <label for="password">رمز ورود</label>
                         <input type="password" id="password" class="form-control" name="password">
                         <?php if (isset($_SESSION['errors']['password'])) { ?>
@@ -69,4 +46,3 @@
         </div>
     </div>
 </div>
-

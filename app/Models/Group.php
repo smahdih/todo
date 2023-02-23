@@ -1,18 +1,15 @@
 <?php
 
 namespace App\Models;
-
 use App\Database\DB;
 
-class User extends DB
+class Group extends DB
 {
-    protected $table = 'users';
+
+    protected $table = 'groups';
     protected $columns = [
+        'id',
         'name',
-        'username',
-        'email',
-        'password',
-        'is_admin',
     ];
 
     public $specs;
@@ -26,6 +23,5 @@ class User extends DB
         }
     }
 
-
-
+    
 }

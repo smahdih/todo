@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>پزشک ها</h1>
+    <h1></h1>
     <div class="row">
         <table class="table">
             <thead>

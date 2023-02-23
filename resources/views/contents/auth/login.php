@@ -1,19 +1,14 @@
-
 <div class="row">
     <div class="col-4 mx-auto">
         <h1>ورود</h1>
         <div class="card">
             <div class="card-body">
-                <?php if (isset($_SESSION['errors']['notActive']) && $_SESSION['errors']['notActive']) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        حساب شما فعال نیست لطفا با مدیریت تماس بگیرید
-                    </div>
-                <?php } ?>
+            
                 <?php if (isset($_SESSION['errors']['notOk']) && $_SESSION['errors']['notOk']) { ?>
                     <div class="alert alert-danger" role="alert">
                         اطلاعات وارد شده صحیح نیست
                     </div>
-                <?php } ?>
+                <?php }  ?>
                 <form action="/auth/login" method="post">
                     <div class="form-group">
                         <label for="email">ایمیل</label>
@@ -29,3 +24,5 @@
         </div>
     </div>
 </div>
+
+

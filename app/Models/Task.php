@@ -4,16 +4,16 @@ namespace App\Models;
 
 use App\Database\DB;
 
-class User extends DB
-{
-    protected $table = 'users';
+class Task extends DB {
+
+    protected $table = 'tasks';
     protected $columns = [
-        'name',
-        'username',
-        'email',
-        'password',
-        'is_admin',
-    ];
+        'id',
+        'group_id',
+        'description',
+    ]; 
+
+
 
     public $specs;
 
@@ -25,7 +25,6 @@ class User extends DB
             $this->{$value} = null;
         }
     }
-
-
-
+    
+    
 }

@@ -17,6 +17,7 @@ class AuthController
     {
         $validation = new Validation($request->toArray());
         $validation->validate([
+
             'email' => ['require', 'email'],
             'password' => ['maxlen:8', 'require']
         ]);
@@ -26,28 +27,16 @@ class AuthController
             $user = $user->findByColumn('email', $request->email);
 
             if ($user->password === md5($request->password)) {
-                if (!$user->isActive()) {
-                    $_SESSION['errors'] = ['notActive' => 1];
-                    return route('/auth/login/show');
-                }
-
                 $_SESSION['user'] = [
                     'id' => $user->id,
                     'name' => $user->name,
                     'username' => $user->username,
                     'email' => $user->email,
-                    'phone_number' => $user->phone_number,
-                    'type' => $user->type,
-                    'specs' => (bool)$user->userHasSpec(),
                 ];
                 return route('/');
-            } else {
-                $_SESSION['errors'] = ['ontOk' => 1];
-                return route('/auth/login/show');
             }
-
         } else {
-            $_SESSION['errors'] = ['ontOk' => 1];
+            $_SESSION['errors'] = ['notOk' => 1];
             return route('/auth/login/show');
         }
     }
@@ -59,18 +48,31 @@ class AuthController
 
     public function register(Request $request)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->phone_number = $request->phone_number;
-        $user->type = $request->type;
-        $user->verified = ($request->type === "DOCTOR" or $request->type === "ADMIN") ? 0 : 1;
-        $user->password = md5($request->password);
-        $user->save();
+        $validation = new Validation($request->toArray());
+        $validation->validate([
+            'name' => ['require', 'minlen:2', 'maxlen:20'],
+            'username' => ['require', 'minlen:2', 'maxlen:20'],
+            'email' => ['require', 'email'],
+            'password' => ['maxlen:8', 'require']   
+        ]);
 
-        return route('/auth/login/show');
+        if (empty($validation->response)) {
+        
+                $user = new User();
+                $user->name = $request->name;
+                $user->username = $request->username;
+                $user->email = $request->email;
+                $user->password = md5($request->password);
+                $user->is_admin = 0;
+                $user->save();
+                return route('/auth/login/show');
+            
+        } else {
+            $_SESSION['errors'] = $validation->response;
+            return route('/auth/register/show');
+        }
     }
+    
 
     public function exit()
     {

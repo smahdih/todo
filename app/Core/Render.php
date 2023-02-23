@@ -24,6 +24,9 @@ class Render
 
         ob_start();
         include_once Application::$ROOT_DIR . "/resources/views/$view.php";
+        $_SESSION['errors'] = [];
         return ob_get_clean();
     }
+
+    
 }

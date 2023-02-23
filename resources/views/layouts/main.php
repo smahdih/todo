@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="fr" dir="rtl">
 <head>
@@ -11,14 +13,14 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">درمانگاه</a>
+        <a class="navbar-brand" href="#">صفحه ی اصلی</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0 me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">پزشک ها</a>
+                    <a class="nav-link active" aria-current="page" href="/">گروه ها</a>
                 </li>
             </ul>
             <div>
@@ -45,55 +47,8 @@
         </div>
     </div>
 </nav>
-<?php if (!$_SESSION['user'] == null && $_SESSION['user']['type'] == "ADMIN") { ?>
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="me-auto">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/users">کاربر ها</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/sections">بخش ها</a>
-                        </li>
-                    </ul>
-                </div>
 
-            </div>
-        </div>
-    </nav>
-<?php } elseif (!$_SESSION['user'] == null && $_SESSION['user']['type'] == "DOCTOR") { ?>
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="me-auto">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/profile">پروفایل</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/doctorTimes">ساعت کاری</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <?php if ($_SESSION['user']['specs'] == false) { ?>
-        <div class="container">
-            <div class="alert alert-warning mt-4" role="alert">
-                لطفا پروفایل خود را تکمیل کنید
-            </div>
-        </div>
-    <?php } ?>
-<?php } ?>
+   
 
 
 
@@ -105,4 +60,5 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </body>
+ 
 </html>

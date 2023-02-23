@@ -20,16 +20,18 @@ $app->router->get('/users', [App\Controllers\UserController::class, 'index']);
 $app->router->get('/users/active', [App\Controllers\UserController::class, 'active']);
 $app->router->get('/users/deActive', [App\Controllers\UserController::class, 'deActive']);
 
-$app->router->get('/sections', [App\Controllers\SectionController::class, 'index']);
-$app->router->post('/users/store', [App\Controllers\SectionController::class, 'store']);
 
-$app->router->get('/profile', [App\Controllers\UserController::class, 'profile']);
-$app->router->post('/profile/store', [App\Controllers\UserController::class, 'storeProfile']);
-$app->router->post('/profile/update', [App\Controllers\UserController::class, 'updateProfile']);
 
-$app->router->get('/doctorTimes', [App\Controllers\UserController::class, 'times']);
-$app->router->post('/doctorTimes/store', [App\Controllers\UserController::class, 'storeDoctorTimes']);
+$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'create']);
+$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'index']);
+$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'delete']);
+$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'update']);
+$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'store']);
+
+
 
 
 
 $app->run();
+
+
