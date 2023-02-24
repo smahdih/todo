@@ -8,9 +8,10 @@ class Task extends DB {
 
     protected $table = 'tasks';
     protected $columns = [
-        'id',
         'group_id',
         'description',
+        'title',
+        'is_done'
     ]; 
 
 
@@ -25,6 +26,8 @@ class Task extends DB {
             $this->{$value} = null;
         }
     }
+
+    
     
     
 }

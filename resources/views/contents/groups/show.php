@@ -21,11 +21,11 @@
                 <div class="row mt-4 mx-1">
                     <table>
                         <tbody class="table table-bordered table-striped">
-                        <?php foreach ($groupUsers as $user) : ?>
-                            <tr>
-                                <td><?= $user->name ?></td>
-                            </tr>
-                        <?php endforeach; ?>
+                            <?php foreach ($groupUsers as $user) : ?>
+                                <tr>
+                                    <td><?= $user->name ?></td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -38,28 +38,28 @@
                 <h5>تسک ها</h5>
             </div>
             <div class="card-body">
-                <form action="/groups/addUser" method="post">
-                    <input type="hidden" name="group" value="<?= $group->id ?>">
-                    <div class="form-control">
-                        <label class="form-label" for="user">انتخاب کاربر</label>
-                        <select class="form-select" name="user" id="user">
-                            <?php foreach ($users as $user) : ?>
-                                <option value="<?= $user->id ?>"><?= $user->name ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <button type="submit" class="btn btn-success mt-3">ارسال</button>
+                <form action="/tasks/store" method="post">
+                    <input type="hidden" name="group_id" value="<?= $group->id ?>">
+                    <div class="form-group">
+                        <label class="form-label" for="title">title</label>
+                        <input class='form-control' type='text' name='title'>
                     </div>
+                    <div class='form=group'>
+                        <label class="form-label" for="title">description</label>
+                        <input class='form-control' type='text' name='description'>
+                    </div>
+                    <button type="submit" class="btn btn-success mt-3">ارسال</button>
                 </form>
                 <div class="row mt-4 mx-1">
-                    <table>
+                    <!-- <table>
                         <tbody class="table table-bordered table-striped">
-                        <?php foreach ($groupUsers as $user) : ?>
-                            <tr>
-                                <td><?= $user->name ?></td>
-                            </tr>
-                        <?php endforeach; ?>
+                            <?php //foreach ($groupUsers as $user) : ?>
+                                <tr>
+                                    <td><? //$user->name ?></td>
+                                </tr>
+                            <?php //endforeach; ?>
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>

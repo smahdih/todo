@@ -30,6 +30,7 @@ $app->router->get('/groups/edit' , [App\Controllers\GroupController::class, 'edi
 $app->router->post('/groups/update' , [App\Controllers\GroupController::class, 'update']);
 $app->router->get('/groups/delete' , [App\Controllers\GroupController::class, 'delete']);
 
+$app->router->post('/tasks/store' , [App\Controllers\TaskController::class, 'store']);
 
 
 
