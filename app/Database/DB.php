@@ -44,7 +44,14 @@ class DB
         $quMark = trim($quMark);
         $columns = implode(',', $this->columns);
         $query = $this->connection->prepare("INSERT INTO $this->table ($columns) VALUES ($quMark)");
+//        dd($query);
         $query->execute(array_values($array));
+    }
+
+    public function delete($id)
+    {
+        $query = $this->connection->prepare("DELETE FROM $this->table WHERE id = :id");
+        $query->execute(['id' => $id]);
     }
 
     public function findByColumn($column,$data){
@@ -74,4 +81,5 @@ class DB
 
         $this->create($array);
     }
+
 }

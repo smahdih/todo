@@ -3,7 +3,6 @@
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use App\Core\Application;
-
 session_start();
 
 $app = new Application(dirname(__DIR__));
@@ -22,11 +21,14 @@ $app->router->get('/users/deActive', [App\Controllers\UserController::class, 'de
 
 
 
-$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'create']);
-$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'index']);
-$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'delete']);
-$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'update']);
-$app->router->get('/groups/groupCreate' , [App\Controllers\GroupController::class, 'store']);
+$app->router->get('/groups' , [App\Controllers\GroupController::class, 'index']);
+$app->router->get('/groups/show' , [App\Controllers\GroupController::class, 'show']);
+$app->router->post('/groups/addUser' , [App\Controllers\GroupController::class, 'addUser']);
+$app->router->get('/groups/create' , [App\Controllers\GroupController::class, 'create']);
+$app->router->post('/groups/store' , [App\Controllers\GroupController::class, 'store']);
+$app->router->get('/groups/edit' , [App\Controllers\GroupController::class, 'edit']);
+$app->router->post('/groups/update' , [App\Controllers\GroupController::class, 'update']);
+$app->router->get('/groups/delete' , [App\Controllers\GroupController::class, 'delete']);
 
 
 

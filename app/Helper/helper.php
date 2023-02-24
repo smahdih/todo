@@ -21,3 +21,8 @@ function route(string $string)
 {
     header("Location:" . "http" . "://$_SERVER[HTTP_HOST]$string");
 }
+
+function session()
+{
+    return new \App\Helper\Session();
+}

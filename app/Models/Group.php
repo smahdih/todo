@@ -8,11 +8,8 @@ class Group extends DB
 
     protected $table = 'groups';
     protected $columns = [
-        'id',
         'name',
     ];
-
-    public $specs;
 
     public function __construct()
     {
@@ -23,5 +20,23 @@ class Group extends DB
         }
     }
 
-    
+    public function getUsers($id)
+    {
+        $query = $this
+            ->connection
+            ->prepare('SELECT users.* FROM users JOIN groups_users ON groups_users.user_id = users.id WHERE groups_users.group_id = :id');
+        $query->execute(['id' => $id]);
+
+        return $query->fetchAll();
+    }
+
+    public function addUser($groupId, $userId)
+    {
+        $query = $this->connection->prepare('INSERT INTO groups_users VALUES (:user_id, :group_id)');
+        $query->execute([
+            'user_id' => $userId,
+            'group_id' => $groupId
+        ]);
+    }
+
 }

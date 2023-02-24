@@ -3,7 +3,7 @@
         <h3>ایجاد گروه</h3>
         <div class="card shadow-sm">
             <div class="card-body">
-                <form action="/auth/register" method="post">
+                <form action="/groups/store" method="post">
                     <div class="form-group mb-2">
                         <label for="name">نام</label>
                         <input type="text" id="name" class="form-control" name="name">

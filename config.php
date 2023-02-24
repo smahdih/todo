@@ -5,5 +5,5 @@ return [
     'host' => 'localhost',
     'dbname' => 'todo',
     'username' => 'root',
-    'password' => 'javad6400'
+    'password' => ''
 ];
