@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Core\Request;
 use App\Database\DB;
 
 class Group extends DB
@@ -37,6 +38,31 @@ class Group extends DB
             'user_id' => $userId,
             'group_id' => $groupId
         ]);
+    }
+    public function getTasks($id)
+    {
+        $query = $this
+            ->connection
+            ->prepare('SELECT tasks.* FROM tasks WHERE tasks.group_id = :group_id');
+        $query->execute(['group_id' => $id]);
+
+        return $query->fetchAll();
+    }
+
+    public function findTask($id){
+      
+        if(is_null($this->getTasks($id))){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public function update($id){
+      
+        $query=$this->connection->prepare('UPDATE tasks SET is_done=1 WHERE group_id=:group_id');
+        $query->execute(['group_id' => $id]);
     }
 
 }

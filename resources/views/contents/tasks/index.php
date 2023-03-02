@@ -8,7 +8,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($tasks as  $task){ ?>
+            <?php foreach($tasks as  $task): ?>
 
                 <tr>
                     <td><?= $task->id ?></td>
@@ -18,7 +18,7 @@
 
 
 
-           <?php } ?>
+           <?php endforeach; ?>
 
 
             

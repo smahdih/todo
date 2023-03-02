@@ -27,11 +27,15 @@ class DB
 
         $query->execute(['id' => $id]);
 
+        
+
         $object = $query->fetchObject();
 
+        if($object){
         foreach ($object as $key => $value) {
             $this->{$key} = $value;
         }
+    }
 
         return $this;
     }
@@ -60,10 +64,11 @@ class DB
         $query->execute([$column => $data]);
         $object = $query->fetchObject();
 
+        if($object){
         foreach ($object as $key => $value) {
             $this->{$key} = $value;
         }
-
+    }
         return $this;
     }
 

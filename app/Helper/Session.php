@@ -61,4 +61,11 @@ class Session implements SessionInterface
         return array_key_exists($key, $_SESSION);
     }
 
+    public static function setAdmin($value){
+        if($value==1){
+        $_SESSION['admin'] = $value;
+        }
+        return self::class;
+    }
+
 }

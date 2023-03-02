@@ -39,6 +39,10 @@
             </div>
             <div class="card-body">
                 <form action="/tasks/store" method="post">
+                    <!-- <?php 
+                   // if($_SESSION['errors']){
+                       // dd($_SESSION['errors']);}
+                        ?> -->
                     <input type="hidden" name="group_id" value="<?= $group->id ?>">
                     <div class="form-group">
                         <label class="form-label" for="title">title</label>
@@ -51,15 +55,38 @@
                     <button type="submit" class="btn btn-success mt-3">ارسال</button>
                 </form>
                 <div class="row mt-4 mx-1">
-                    <!-- <table>
+                    
+                    <table>
                         <tbody class="table table-bordered table-striped">
-                            <?php //foreach ($groupUsers as $user) : ?>
+
+                        <td>title</td>
+                        <td>description</td>
+                        <td>is_done</td>
+                            <?php foreach ($tasks as $task) : ?>
+                                
                                 <tr>
-                                    <td><? //$user->name ?></td>
+                                <form action='/groups/show' method='post'>
+                                    <td><?= $task->title ?></td>
+                                    <td><?= $task->description ?></td>
+                                    <td><?= $task->is_done ?></td>
+                                    <?php
+                                    if(!$task->is_done):
+                                    ?>
+                                    <td><input type='hidden' name='id' value='1' ></td>
+                                    <td><input type='submit' value='done' class=' bg-success btn btn-success mt-3'></td>
+                                   <?php endif;?>
+                                   <?php
+                                   if($task->is_done):
+                                   ?>
+                                   <td class='bg-success'>Done!</td>
+                                   <?php endif;?>
+                                    </form>
                                 </tr>
-                            <?php //endforeach; ?>
+                               
+                                
+                            <?php endforeach; ?>
                         </tbody>
-                    </table> -->
+                    </table>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@ $app->router->get('/groups/delete' , [App\Controllers\GroupController::class, 'd
 
 $app->router->post('/tasks/store' , [App\Controllers\TaskController::class, 'store']);
 
-
+$app->router->post('/groups/show',[App\Controllers\GroupController::class,'update']);
 
 
 $app->run();

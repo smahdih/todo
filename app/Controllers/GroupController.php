@@ -6,6 +6,7 @@ use App\Core\Render;
 use App\Core\Request;
 use App\Helper\Session;
 use App\Models\Group;
+use App\Models\Task;
 use App\Models\User;
 use App\Requests\Validation;
 use App\Traits\UserLoginTrait;
@@ -23,6 +24,7 @@ class GroupController
         $groups = (new Group())->all();
         return Render::view('/contents/groups/index', [
             'groups' => $groups,
+
         ]);
     }
 
@@ -30,11 +32,15 @@ class GroupController
     {
         $group = (new Group())->find($request->id);
         $groupUsers = $group->getUsers($request->id);
+        $grouptasks = $group->getTasks($request->id);
+        $tasks=(new Task())->all();
         $users = (new User())->all();
         return Render::view('/contents/groups/show', [
             'group' => $group,
             'groupUsers' => $groupUsers,
-            'users' => $users
+            'users' => $users,
+            'grouptasks'=>$grouptasks,
+            'tasks'=>$tasks
         ]);
     }
 
@@ -76,8 +82,17 @@ class GroupController
         return route('/groups');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $group=new Group();
+
+            if($group->findTask($request->id)){
+
+                $group->update($request->id);
+                
+                return route("/groups/show?id=$request->id");
+            }
+
     }
 
 }

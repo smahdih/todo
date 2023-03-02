@@ -37,10 +37,14 @@ class AuthController
                 "name" => $user->name,
                 "username" => $user->username,
                 "email" => $user->email,
+                
             ]);
+
+            Session::setAdmin($user->is_admin);
             return route("/");
         }
     }
+
 
     public function showRegister()
     {
