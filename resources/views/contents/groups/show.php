@@ -76,24 +76,23 @@
 
                         <td>title</td>
                         <td>description</td>
-                        <td>is_done</td>
+                        <td>status</td>
                             <?php foreach ($tasks as $task) : ?>
                                 
                                 <tr>
                                 <form action='/groups/show' method='post'>
                                     <td><?= $task->title ?></td>
                                     <td><?= $task->description ?></td>
-                                    <td><?= $task->is_done ?></td>
                                     <?php
                                     if(!$task->is_done):
                                     ?>
                                     <td><input type='hidden' name='id' value='1' ></td>
-                                    <td><input type='submit' value='done' class=' bg-success btn btn-success mt-3'></td>
+                                    <td><input type='submit' value='done' class=' bg-success btn btn-success'></td>
                                    <?php endif;?>
                                    <?php
                                    if($task->is_done):
                                    ?>
-                                   <td class='bg-success'>Done!</td>
+                                   <td class='bg-success d-flex justify-content-center'>Done!</td>
                                    <?php endif;?>
                                     </form>
                                 </tr>
