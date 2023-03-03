@@ -47,7 +47,7 @@ class Session implements SessionInterface
     public static function remove(string $key): void
     {
         if (self::has($key)) {
-            unset($_SESSION[$key]);
+           session_destroy();
         }
     }
 

@@ -40,7 +40,8 @@ class AuthController
                 
             ]);
 
-            Session::setAdmin($user->is_admin);
+                
+                 Session::setAdmin($user->is_admin);
             return route("/");
         }
     }
