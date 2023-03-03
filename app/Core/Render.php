@@ -20,6 +20,7 @@ class Render
 
     protected static function renderOnlyView($view, $response = null)
     {
+
         if ($response) extract($response);
 
         ob_start();

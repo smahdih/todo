@@ -35,12 +35,15 @@ class GroupController
         $grouptasks = $group->getTasks($request->id);
         $tasks=(new Task())->all();
         $users = (new User())->all();
+        foreach($tasks as $task){
+           $task->label=$task->getLabel($task->id);
+        }
         return Render::view('/contents/groups/show', [
             'group' => $group,
             'groupUsers' => $groupUsers,
             'users' => $users,
             'grouptasks'=>$grouptasks,
-            'tasks'=>$tasks
+            'tasks'=>$tasks,
         ]);
     }
 

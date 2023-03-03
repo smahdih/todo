@@ -27,14 +27,14 @@ class TaskController
         $group = (new Group())->find($request->id);
         $grouptasks = $group->getTasks($request->id);
         $tasks=(new Task)->all();
+       
         return Render::view('/contents/groups/show', [
             'group' => $group,
             'grouptasks' => $grouptasks,
-            'tasks' => $tasks
-            
+            'tasks' => $tasks,
         ]);
     }
-    
+   
     public function store(Request $request){
         
         
@@ -54,8 +54,12 @@ class TaskController
         $request->is_done=0;
         $task=new Task();
 
+        $data=$request->toArray();
+        unset($data['label']);
         // this has extra label//
-        $task->create($request->toArray());
+        $task->create($data);
+
+       
 
 
         $count=$task->countAsLastId();

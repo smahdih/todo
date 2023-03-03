@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Database\DB;
+use PDO;
 
 class Task extends DB {
 
@@ -22,9 +23,7 @@ class Task extends DB {
     {
         parent::__construct();
 
-        foreach ($this->columns as $value) {
-            $this->{$value} = null;
-        }
+       
     }
 
     public function addLabel($labelId, $taskId)
@@ -36,6 +35,27 @@ class Task extends DB {
         ]);
     }
     
+    public function getLabel($id){
+        $query = $this
+        ->connection
+        ->prepare('SELECT labels.* FROM labels JOIN labels_tasks ON labels_tasks.label_id = labels.id WHERE labels_tasks.task_id = :id');
+     $query->execute(['id' => $id]);
+
+    return $query->fetchAll();
+    }
     
-    
+    // public function all()
+    // {
+
+    //     $query = $this->connection->prepare("SELECT * FROM $this->table");
+    //     $query->execute();
+    //     return $query->fetchAll(PDO::FETCH_CLASS, Task::class);
+    // //    $result=parent::all();
+    // //    foreach($result as $value){
+    // //         $task=new Task();
+    // //         $task->group_id=$value->group_id;
+    // //         $task->title=$value->title;
+    // //         $task->description=$value->description;
+    // //    }
+    // }
 }

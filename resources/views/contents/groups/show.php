@@ -76,17 +76,34 @@
 
                         <td>title</td>
                         <td>description</td>
+                        <td>labels</td>
                         <td>status</td>
+                        
                             <?php foreach ($tasks as $task) : ?>
                                 
                                 <tr>
                                 <form action='/groups/show' method='post'>
                                     <td><?= $task->title ?></td>
                                     <td><?= $task->description ?></td>
+                                    <?php if(!empty($task->label)):?>
+                                    <td class='bg-primary rounded'><?php foreach($task->label as $labels){
+                                     if(is_array($labels)){
+                                        foreach($labels as $label){
+                                            echo $label->name;
+                                        }
+                                     } 
+                                     echo $labels->name ;
+                                    }
+                                     ?></td>
+                                     <?php endif;?>
+
+                                     <?php if(empty($task->label)):?>
+                                     <td>no label</td>
+                                    <?php endif;?>
                                     <?php
                                     if(!$task->is_done):
                                     ?>
-                                    <td><input type='hidden' name='id' value='1' ></td>
+                                    <td class='bg-danger rounded'><input type='hidden' name='id' value='1'>..Not Done</td>
                                     <td><input type='submit' value='done' class=' bg-success btn btn-success'></td>
                                    <?php endif;?>
                                    <?php

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Database;
+use PDO;
 
 class DB
 {
@@ -18,7 +19,8 @@ class DB
     {
         $query = $this->connection->prepare("SELECT * FROM $this->table");
         $query->execute();
-        return $query->fetchAll();
+        
+        return $query->fetchAll(PDO::FETCH_CLASS, static::class);
     }
 
     public function find($id)
@@ -89,7 +91,7 @@ class DB
 
     public function countAsLastId(){
 
-        $query=$this->connection->prepare("SELECT COUNT(name) AS last_id FROM $this->table");
+        $query=$this->connection->prepare("SELECT COUNT(title) AS last_id FROM $this->table");
         $query->execute();
         return $query->fetch();
     }
