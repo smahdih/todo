@@ -27,7 +27,14 @@ class Task extends DB {
         }
     }
 
-   
+    public function addLabel($labelId, $taskId)
+    {
+        $query = $this->connection->prepare('INSERT INTO labels_tasks VALUES (:label_id, :task_id)');
+        $query->execute([
+            'label_id' => $labelId,
+            'task_id' => $taskId
+        ]);
+    }
     
     
     

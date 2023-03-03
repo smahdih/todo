@@ -87,4 +87,11 @@ class DB
         $this->create($array);
     }
 
+    public function countAsLastId(){
+
+        $query=$this->connection->prepare("SELECT COUNT(name) AS last_id FROM $this->table");
+        $query->execute();
+        return $query->fetch();
+    }
+
 }

@@ -6,6 +6,7 @@
                 <h5>کاربر ها</h5>
             </div>
             <div class="card-body">
+                <?php if(isset($_SESSION['admin'])):?>
                 <form action="/groups/addUser" method="post">
                     <input type="hidden" name="group" value="<?= $group->id ?>">
                     <div class="form-control">
@@ -18,6 +19,7 @@
                         <button type="submit" class="btn btn-success mt-3">ارسال</button>
                     </div>
                 </form>
+                <?php endif;?>
                 <div class="row mt-4 mx-1">
                     <table>
                         <tbody class="table table-bordered table-striped">
@@ -38,6 +40,7 @@
                 <h5>تسک ها</h5>
             </div>
             <div class="card-body">
+                <?php if(isset($_SESSION['admin'])):?>
                 <form action="/tasks/store" method="post">
                     <!-- <?php 
                    // if($_SESSION['errors']){
@@ -48,12 +51,24 @@
                         <label class="form-label" for="title">title</label>
                         <input class='form-control' type='text' name='title'>
                     </div>
-                    <div class='form=group'>
+                    <div class='form-group'>
                         <label class="form-label" for="title">description</label>
                         <input class='form-control' type='text' name='description'>
                     </div>
+                    <div class='form-group'>
+                        <h3>لیبل ها</h3>
+                        <lable class="form-label" for="bug">باگ</lable>
+                        <input type='checkbox' name='label[]' value='1'>
+                        <label class="form-label" for="urgent">فوری</label>
+                        <input type='checkbox' name='label[]' value='2'>
+                        <label class="form-label" for="meet">جلسه</label>
+                        <input type='checkbox' name='label[]' value='3'>
+                        <label class="form-label" for="refactor">ریفکتور</label>
+                        <input type='checkbox' name='label[]' value='4'>
+                    </div>
                     <button type="submit" class="btn btn-success mt-3">ارسال</button>
                 </form>
+                <?php endif;?>
                 <div class="row mt-4 mx-1">
                     
                     <table>
